@@ -13,22 +13,24 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        AboutComponent
+        AboutComponent,
+        TopMenuComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        AppRoutingModule,
         MatMenuModule,
         MatButtonModule,
         MatIconModule,
         MatCardModule,
         MatTabsModule,
-        AppRoutingModule,
         MatSidenavModule,
         MatListModule,
         MatToolbarModule

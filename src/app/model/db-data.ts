@@ -1,9 +1,9 @@
-import {Course} from "./course";
+import { Course } from "./course";
 
 export const COURSES: any = {
 
     0: {
-        id:0,
+        id: 0,
         description: "Angular Material Course",
         iconUrl: "https://s3-us-west-1.amazonaws.com/angular-university/course-images/material_design.png",
         longDescription: "Build Applications with the official Angular Widget Library",
