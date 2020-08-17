@@ -14,9 +14,6 @@ export class CoursesService {
     }
 
     findAllCourses(): Observable<Course[]> {
-
-        debugger;
-
         return this.http.get('/api/courses')
             .pipe(
                 map(res => res['payload'])
