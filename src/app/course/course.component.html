@@ -1,4 +1,20 @@
 <div class="course">
     <h2>{{course?.description}}</h2>
     <img class="course-thumbnail" [src]="course?.iconUrl">
+    <table mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="seqNo">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let lesson">{{ lesson.seqNo }}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell class="description-cell" *matHeaderCellDef>Description</th>
+            <td mat-cell class="description-cell" *matCellDef="let lesson"> {{ lesson.description }} </td>
+        </ng-container>
+        <ng-container matColumnDef="duration">
+            <th mat-header-cell class="duration-cell" *matHeaderCellDef>Duration</th>
+            <td mat-cell class="duration-cell" *matCellDef="let lesson"> {{ lesson.duration }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>

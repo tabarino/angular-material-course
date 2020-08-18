@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
 import { CourseComponent } from './course/course.component';
@@ -41,7 +42,8 @@ import { CourseResolver } from './services/course.resolver';
         MatTabsModule,
         MatSidenavModule,
         MatListModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatTableModule
     ],
     providers: [
         CoursesService,
