@@ -24,4 +24,7 @@ export class CourseComponent implements OnInit {
         );
     }
 
+    searchLessons(search) {
+        this.dataSource.filter = search.toLowerCase().trim();
+    }
 }
