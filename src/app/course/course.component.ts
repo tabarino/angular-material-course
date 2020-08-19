@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'app/model/course';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../services/courses.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { Lesson } from 'app/model/lesson';
+import { LessonsDataSource } from '../services/lessons.datasource';
 
 @Component({
     selector: 'course',
@@ -12,19 +11,18 @@ import { Lesson } from 'app/model/lesson';
 })
 export class CourseComponent implements OnInit {
     course: Course;
-    dataSource = new MatTableDataSource([]);
+    dataSource: LessonsDataSource;
     displayedColumns = ['seqNo', 'description', 'duration'];
 
     constructor(private route: ActivatedRoute, private coursesService: CoursesService) { }
 
     ngOnInit(): void {
         this.course = this.route.snapshot.data['course'];
-        this.coursesService.findAllCourseLessons(this.course.id).subscribe(
-            lessons => this.dataSource.data = lessons
-        );
+        this.dataSource = new LessonsDataSource(this.coursesService);
+        this.dataSource.loadLessons(this.course.id, '', 'asc', 0, 3);
     }
 
     searchLessons(search) {
-        this.dataSource.filter = search.toLowerCase().trim();
+        // this.dataSource.filter = search.toLowerCase().trim();
     }
 }
