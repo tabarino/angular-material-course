@@ -21,6 +21,7 @@ import { CoursesCardListComponent } from './courses-card-list/courses-card-list.
 import { CourseComponent } from './course/course.component';
 import { CoursesService } from './services/courses.service';
 import { CourseResolver } from './services/course.resolver';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { CourseResolver } from './services/course.resolver';
         MatListModule,
         MatToolbarModule,
         MatTableModule,
-        MatInputModule
+        MatInputModule,
+        MatPaginatorModule
     ],
     providers: [
         CoursesService,
