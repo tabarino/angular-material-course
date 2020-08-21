@@ -24,6 +24,7 @@ import { CourseResolver } from './services/course.resolver';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
         AboutComponent,
         TopMenuComponent,
         CoursesCardListComponent,
-        CourseComponent
+        CourseComponent,
+        CourseDialogComponent
     ],
     imports: [
         BrowserModule,

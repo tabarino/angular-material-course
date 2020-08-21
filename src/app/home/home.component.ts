@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course';
-import { COURSES } from '../model/db-data';
 import { CoursesService } from 'app/services/courses.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,9 +13,10 @@ export class HomeComponent implements OnInit {
     beginnerCourses$: Observable<Course[]>;
     advancedCourses$: Observable<Course[]>;
 
-    constructor(private coursesService: CoursesService) { }
+    constructor(private coursesService: CoursesService) {
+    }
 
-    ngOnInit() {
+    ngOnInit(): void {
         const courses$ = this.coursesService.findAllCourses();
 
         this.beginnerCourses$ = courses$.pipe(

@@ -10,5 +10,8 @@
         <button mat-button class="mat-raised-button mat-primary" [routerLink]="['/courses', course.id]">
             View Course
         </button>
+        <button mat-button class="mat-raised-button mat-accent" (click)="editCourse(course)">
+            Edit
+        </button>
     </mat-card-actions>
 </mat-card>

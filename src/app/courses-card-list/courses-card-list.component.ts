@@ -14,4 +14,8 @@ export class CoursesCardListComponent implements OnInit {
 
     ngOnInit(): void {
     }
+
+    editCourse({description, longDescription, category}: Course) {
+
+    }
 }
