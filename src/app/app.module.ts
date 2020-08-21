@@ -25,6 +25,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { CourseDialogComponent } from './course-dialog/course-dialog.component';
         MatInputModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatSortModule
+        MatSortModule,
+        MatDialogModule
     ],
     providers: [
         CoursesService,
