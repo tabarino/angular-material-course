@@ -29,7 +29,6 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.paginator.page.pipe(
-            startWith(null),
             tap(() => {
                 this.dataSource.loadLessons(
                     this.course.id, '', 'asc', this.paginator.pageIndex, this.paginator.pageSize
