@@ -23,6 +23,7 @@ import { CoursesService } from './services/courses.service';
 import { CourseResolver } from './services/course.resolver';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatTableModule,
         MatInputModule,
         MatPaginatorModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSortModule
     ],
     providers: [
         CoursesService,

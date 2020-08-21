@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../services/courses.service';
 import { LessonsDataSource } from '../services/lessons.datasource';
 import { MatPaginator } from '@angular/material/paginator';
-import { startWith, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 
 @Component({
     selector: 'course',
@@ -19,6 +21,9 @@ export class CourseComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator)
     paginator: MatPaginator;
 
+    @ViewChild(MatSort)
+    sort: MatSort;
+
     constructor(private route: ActivatedRoute, private coursesService: CoursesService) { }
 
     ngOnInit(): void {
@@ -28,10 +33,15 @@ export class CourseComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.paginator.page.pipe(
+        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+        merge(this.sort.sortChange, this.paginator.page)
+        .pipe(
             tap(() => {
                 this.dataSource.loadLessons(
-                    this.course.id, '', 'asc', this.paginator.pageIndex, this.paginator.pageSize
+                    this.course.id, '',
+                    this.sort.direction,
+                    this.paginator.pageIndex,
+                    this.paginator.pageSize
                 );
             })
         ).subscribe();
