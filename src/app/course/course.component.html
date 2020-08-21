@@ -4,7 +4,7 @@
     <br><br>
     <mat-form-field class="example-full-width">
         <mat-label>Search Lessons</mat-label>
-        <input matInput #search (keyup)="searchLessons(search.value)">
+        <input matInput #search>
     </mat-form-field>
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">
         <mat-spinner></mat-spinner>

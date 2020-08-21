@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { Course } from 'app/model/course';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../services/courses.service';
 import { LessonsDataSource } from '../services/lessons.datasource';
 import { MatPaginator } from '@angular/material/paginator';
-import { tap } from 'rxjs/operators';
+import { debounce, debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
-import { merge } from 'rxjs';
+import { fromEvent, merge } from 'rxjs';
 
 @Component({
     selector: 'course',
@@ -17,12 +17,9 @@ export class CourseComponent implements OnInit, AfterViewInit {
     course: Course;
     dataSource: LessonsDataSource;
     displayedColumns = ['seqNo', 'description', 'duration'];
-
-    @ViewChild(MatPaginator)
-    paginator: MatPaginator;
-
-    @ViewChild(MatSort)
-    sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild('search') search: ElementRef;
 
     constructor(private route: ActivatedRoute, private coursesService: CoursesService) { }
 
@@ -34,20 +31,28 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-        merge(this.sort.sortChange, this.paginator.page)
-        .pipe(
+
+        fromEvent(this.search.nativeElement, 'keyup').pipe(
+            debounceTime(150),
+            distinctUntilChanged(),
             tap(() => {
-                this.dataSource.loadLessons(
-                    this.course.id, '',
-                    this.sort.direction,
-                    this.paginator.pageIndex,
-                    this.paginator.pageSize
-                );
+                this.paginator.pageIndex = 0;
+                this.loadLessonsPage();
             })
+        ).subscribe();
+
+        merge(this.sort.sortChange, this.paginator.page).pipe(
+            tap(() => this.loadLessonsPage())
         ).subscribe();
     }
 
-    searchLessons(search) {
-        // this.dataSource.filter = search.toLowerCase().trim();
+    loadLessonsPage(): void {
+        this.dataSource.loadLessons(
+            this.course.id,
+            this.search.nativeElement.value,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+        );
     }
 }
