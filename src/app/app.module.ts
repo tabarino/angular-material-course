@@ -28,6 +28,9 @@ import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
     declarations: [
@@ -59,11 +62,14 @@ import { MatSelectModule } from '@angular/material/select';
         MatProgressSpinnerModule,
         MatSortModule,
         MatDialogModule,
-        MatSelectModule
+        MatSelectModule,
+        MatMomentDateModule,
+        MatDatepickerModule
     ],
     providers: [
         CoursesService,
-        CourseResolver
+        CourseResolver,
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
     ],
     bootstrap: [AppComponent]
 })
