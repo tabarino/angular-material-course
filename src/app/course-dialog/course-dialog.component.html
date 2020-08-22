@@ -18,8 +18,15 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="longDescription"></textarea>
+    </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
+    <button class="mat-raised-button mat-primary" (click)="save()">
+        Save
+    </button>
     <button class="mat-raised-button" (click)="close()">
         Close
     </button>

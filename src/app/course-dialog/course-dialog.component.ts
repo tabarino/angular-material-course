@@ -23,11 +23,16 @@ export class CourseDialogComponent implements OnInit {
         this.formCourseDialog = this.fb.group({
             description: [description, Validators.required],
             category: [category, Validators.required],
-            releasedAt: [moment(), Validators.required]
+            releasedAt: [moment(), Validators.required],
+            longDescription: [longDescription, Validators.required]
         });
     }
 
     ngOnInit(): void {
+    }
+
+    save(): void {
+        this.dialogRef.close(this.formCourseDialog.value);
     }
 
     close(): void {
