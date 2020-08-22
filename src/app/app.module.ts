@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         BrowserAnimationsModule,
         HttpClientModule,
         AppRoutingModule,
+        ReactiveFormsModule,
         MatMenuModule,
         MatButtonModule,
         MatIconModule,
