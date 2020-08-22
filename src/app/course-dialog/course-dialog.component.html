@@ -4,6 +4,14 @@
         <mat-label>Course Description</mat-label>
         <input matInput formControlName="description">
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Choose a category</mat-label>
+        <mat-select formControlName="category">
+            <mat-option value="BEGINNER">Beginner</mat-option>
+            <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+            <mat-option value="ADVANCED">Advanced</mat-option>
+        </mat-select>
+    </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">

@@ -27,6 +27,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatSortModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSelectModule
     ],
     providers: [
         CoursesService,
